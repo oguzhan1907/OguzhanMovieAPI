@@ -19,12 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--<activity-->
+            <!--android:name=".grid.DetailActivity"-->
+            <!--android:label="Detail"-->
+            <!--android:parentActivityName=".MainActivity"></activity>-->
         <activity
-            android:name=".DetailActivity"
-            android:label="Detail"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity
-            android:name=".SettingsActivity"
+            android:name=".grid.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity">
             <meta-data

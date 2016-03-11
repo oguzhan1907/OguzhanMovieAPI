@@ -62,4 +62,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="sort_key">sort</string>
+    <string name="item_imageView_contentDescription">Item Image</string>
 </resources>

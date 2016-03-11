@@ -1,6 +1,8 @@
-package com.example.tmp.imozb;
+package com.example.tmp.imozb.grid;
 
 import android.util.Log;
+
+import com.example.tmp.imozb.MovieItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,19 +23,20 @@ public class DicoverParse {
         discoverStr =  mDiscoverParse;
     }
 
-    public  ArrayList<MovieInfo> jsonParse () throws JSONException, MalformedURLException {
+    public  ArrayList<MovieItem> jsonParse () throws JSONException, MalformedURLException {
 
         JSONObject infoObject = new JSONObject(discoverStr);
 
         JSONArray infoArray = infoObject.getJSONArray("results");
 
-        ArrayList<MovieInfo> movies = new ArrayList<MovieInfo>();
+        ArrayList<MovieItem> movieItems = new ArrayList<MovieItem>();
 
         for (int i = 0; infoArray.length()>i;i++){
             JSONObject movieObjet = infoArray.getJSONObject(i);
 
+
             // Create movie objects with that contains all the info
-            MovieInfo movieTemp = new MovieInfo(movieObjet.getString("title")
+            MovieItem movieItem = new MovieItem(movieObjet.getString("title")
                     ,movieObjet.getString("poster_path")
                     ,movieObjet.getString("overview")
 
@@ -43,10 +46,10 @@ public class DicoverParse {
             Log.v("Title", movieObjet.getString("title"));
 
 
-            movies.add(movieTemp);
+            movieItems.add(movieItem);
         }
 
-        return movies;
+        return movieItems;
     }
 
 

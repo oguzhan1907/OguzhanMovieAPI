@@ -7,18 +7,19 @@ import java.net.MalformedURLException;
 /**
  * Created by tmp on 22/02/16.
  */
-public class MovieInfo {
+public class MovieItem {
 
-    public String title;
-    public String posterPath;
-    public String movieUrl;
-    public String discription;
+    private String mTitle;
+    private String mPosterUrl;
+    private String mMovieUrl;
+    private String mDescription;
 
-    public MovieInfo(String mTitle,String mPosterPath, String mDiscription) throws MalformedURLException {
-        title = mTitle;
-        posterPath = mPosterPath;
-        movieUrl = postUrlBuilder(mPosterPath);
-        discription = mDiscription;
+    public MovieItem(String title,String posterUrl, String description ) throws MalformedURLException {
+        super();
+        mTitle = title;
+        mPosterUrl = posterUrl;
+        mMovieUrl = postUrlBuilder(posterUrl);
+        mDescription = description;
     }
 
     public String postUrlBuilder (String path) throws MalformedURLException {
@@ -42,4 +43,29 @@ public class MovieInfo {
 
 
     }
+
+    public String getPosterUrl() {
+        return mPosterUrl;
+    }
+
+    public void setImageUrl(String posterUrl) {
+        mPosterUrl = posterUrl;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
+    }
 }
+
