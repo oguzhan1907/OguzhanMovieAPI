@@ -12,29 +12,27 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by tmp on 22/02/16.
+ * ImageAdapter that populates the grid with movie posters
  */
 public class ImageAdapter extends ArrayAdapter {
     private Context context;
     private ArrayList<MovieInfo> movies;
     public ArrayList<String> movieUrls = new ArrayList<String>();
 
-    //public String[] imageUrls;
     private LayoutInflater inflater;
 
+    // Constructor of the class
     public ImageAdapter(Context mcontext, ArrayList<MovieInfo> wMovies) {
         super(mcontext, R.layout.grid_view, wMovies);
-
         context = mcontext;
         movies = wMovies;
         movieUrls.addAll(getPosterUrls(wMovies));
-        //imageUrls = movieUrls.toArray(new String[movieUrls.size()]);
         inflater = LayoutInflater.from(context);
 
 
     }
 
-
+    // Gets urls form the MovieItemclass
     private ArrayList<String> getPosterUrls(ArrayList<MovieInfo> wMovies) {
 
         ArrayList<String> tempMovieUrls = new ArrayList<String>();
@@ -47,12 +45,14 @@ public class ImageAdapter extends ArrayAdapter {
 
     }
 
+    // Positiions the items of the grid and recyles the views
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (null == convertView) {
             convertView = inflater.inflate(R.layout.grid_view, parent, false);
         }
 
+        // Movieposter loader library
         Picasso
                 .with(context)
                 .load(movieUrls.get(position))
@@ -63,11 +63,4 @@ public class ImageAdapter extends ArrayAdapter {
         return convertView;
     }
 
-    public ArrayList<MovieInfo> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(ArrayList<MovieInfo> movies) {
-        this.movies = movies;
-    }
 }

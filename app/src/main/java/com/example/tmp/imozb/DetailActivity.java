@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+/**
+ * When Poster is clicked this detailed information screen opens
+ * containing an movies poster, title and description
+ */
 public class DetailActivity extends AppCompatActivity {
 
     TextView title;
@@ -23,6 +27,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // Gets the movie inforamation passed throug the on item clicklister with
+        // an intent.
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(MainActivity.EXTRA_MESSAGE_TITLE)) {
 
@@ -38,13 +44,11 @@ public class DetailActivity extends AppCompatActivity {
             String resize = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_URL);
             resize = resize.replace(OLD_SIZE_PARAM, NEW_SIZE_PARAM);
 
-            // Set Image
+            // Set Image with imageloader library
             Picasso
                     .with(getApplicationContext())
                     .load(resize)
                     .into(poster);
-
-            //title = (TextView) findViewById(R.id.detail_title).setText(intent.getStringExtra(MainActivity.EXTRA_MESSAGE_TITLE));
 
 
         }

@@ -5,7 +5,7 @@ import android.net.Uri;
 import java.net.MalformedURLException;
 
 /**
- * Created by tmp on 22/02/16.
+ * Movie info class that contains all the info movie info  retrived from the api
  */
 public class MovieInfo {
 
@@ -14,18 +14,19 @@ public class MovieInfo {
     public String movieUrl;
     public String discription;
 
-    public MovieInfo(String mTitle,String mPosterPath, String mDiscription) throws MalformedURLException {
+    // Constructor of the class
+    public MovieInfo(String mTitle, String mPosterPath, String mDiscription) throws MalformedURLException {
         title = mTitle;
         posterPath = mPosterPath;
         movieUrl = postUrlBuilder(mPosterPath);
         discription = mDiscription;
     }
 
-    public String postUrlBuilder (String path) throws MalformedURLException {
-        //http://image.tmdb.org/t/p/.
+    // Build the Url off each movie poster
+    public String postUrlBuilder(String path) throws MalformedURLException {
         final String BASE_URL = "image.tmdb.org";
-        //final String dicover /3/discover/movie
         final String API_PARAM = "api_key";
+        // size of poster
         final String SIZE_PARAM = "w185";
 
         Uri.Builder builder = new Uri.Builder();
@@ -39,7 +40,6 @@ public class MovieInfo {
         String urlKey = builder.build().toString();
 
         return urlKey;
-
 
     }
 }
